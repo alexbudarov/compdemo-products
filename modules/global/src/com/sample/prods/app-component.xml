@@ -6,6 +6,8 @@
         <artifact name="prods-global" appJar="true"/>
 
         <!--<property name="cuba.persistenceConfig" value="+com/sample/prods/persistence.xml"/>-->
+        <property name="addon.products.persistenceConfig" value="+com/sample/prods/persistence.xml"/>
+
         <property name="cuba.metadataConfig" value="+com/sample/prods/metadata.xml"/>
         <property name="cuba.viewsConfig" value="+com/sample/prods/views.xml"/>
     </module>

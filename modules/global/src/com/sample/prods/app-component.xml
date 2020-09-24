@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<app-component xmlns="http://schemas.haulmont.com/cuba/app-component.xsd"
+               dependsOn="com.haulmont.cuba">
+
+    <module name="global" blocks="*">
+        <artifact name="prods-global" appJar="true"/>
+
+        <!--<property name="cuba.persistenceConfig" value="+com/sample/prods/persistence.xml"/>-->
+        <property name="cuba.metadataConfig" value="+com/sample/prods/metadata.xml"/>
+        <property name="cuba.viewsConfig" value="+com/sample/prods/views.xml"/>
+    </module>
+    <module name="core" dependsOn="global" blocks="core">
+        <artifact name="prods-core" appJar="true"/>
+        <artifact name="prods-core" classifier="db" ext="zip" configuration="dbscripts"/>
+
+        <property name="cuba.springContextConfig" value="+com/sample/prods/spring.xml"/>
+        <property name="cuba.mainMessagePack" value="+com.sample.prods.core"/>
+    </module>
+    <module name="web" dependsOn="global" blocks="web">
+        <artifact name="prods-web" appJar="true"/>
+        <artifact name="prods-web" classifier="web" ext="zip" configuration="webcontent"/>
+
+        <property name="cuba.springContextConfig" value="+com/sample/prods/web-spring.xml"/>
+        <property name="cuba.dispatcherSpringContextConfig" value="+com/sample/prods/web-dispatcher-spring.xml"/>
+        <property name="cuba.windowConfig" value="+com/sample/prods/web-screens.xml"/>
+        <property name="cuba.menuConfig" value="+com/sample/prods/web-menu.xml"/>
+        <property name="cuba.permissionConfig" value="+com/sample/prods/web-permissions.xml"/>
+        <property name="cuba.mainMessagePack" value="+com.sample.prods.web"/>
+    </module>
+</app-component>
